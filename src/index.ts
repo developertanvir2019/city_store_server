@@ -14,7 +14,7 @@ app.use(signupRouter);
 const port = process.env.port || 5000;
 
 app.get("/", async (req, res) => {
-  res.send("server is running");
+  res.send(" city store server is running ");
 });
 
 app.all("*", async (req: Request, res: Response, next: NextFunction) => {
