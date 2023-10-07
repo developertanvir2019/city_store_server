@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 require("dotenv").config();
 import express from "express";
+import cors from "cors";
 import { Request, Response, NextFunction } from "express";
 import { json } from "body-parser";
 import userRouter from "./authentication/user.router";
@@ -8,6 +9,7 @@ import userRouter from "./authentication/user.router";
 const app = express();
 
 app.use(json());
+app.use(cors());
 const port = process.env.port || 5000;
 
 app.get("/", async (req, res) => {
