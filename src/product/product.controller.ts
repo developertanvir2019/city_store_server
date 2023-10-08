@@ -30,7 +30,7 @@ export const getProducts = async (req: Request, res: Response) => {
   try {
     const { category, title, page } = req.query;
     const filter: any = {};
-    const perPage = 15;
+    const perPage = 12;
 
     if (category) {
       const categoryString = category as string; // Explicitly cast to string

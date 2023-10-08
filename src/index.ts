@@ -6,6 +6,7 @@ import { Request, Response, NextFunction } from "express";
 import { json } from "body-parser";
 import userRouter from "./authentication/user.router";
 import productRoutes from "./product/product.routes";
+import wishListRoutes from "./wishlist/wishlist.routes";
 const app = express();
 
 app.use(json());
@@ -18,6 +19,7 @@ app.get("/", async (req, res) => {
 
 app.use("/api/user", userRouter);
 app.use("/api/product", productRoutes);
+app.use("/api/wishlist", wishListRoutes);
 
 app.all("*", async (req: Request, res: Response, next: NextFunction) => {
   return next(new Error("Invalid route"));
