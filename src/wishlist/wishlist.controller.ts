@@ -44,3 +44,22 @@ export const getUserWishlist = async (req: Request, res: Response) => {
     res.status(500).json({ error: "Failed to fetch user wishlist" });
   }
 };
+
+export const deleteFromWishlist = async (req: Request, res: Response) => {
+  try {
+    const { itemId } = req.params;
+
+    // Find and delete the wishlist item by its ID
+    const deletedItem = await Wishlist.findByIdAndDelete(itemId);
+
+    if (!deletedItem) {
+      return res.status(404).json({ error: "Item not found in the wishlist" });
+    }
+
+    res
+      .status(200)
+      .json({ message: "Product removed from wishlist successfully" });
+  } catch (error) {
+    res.status(500).json({ error: "Failed to remove product from wishlist" });
+  }
+};
