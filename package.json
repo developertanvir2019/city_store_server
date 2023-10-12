@@ -4,12 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node-dev src/index.ts"
+    "start": "ts-node-dev src/index.ts",
+    "build": "rimraf dist && tsc",
+    "ts.check": "tsc --project tsconfig.json",
+    "add-build": "git add dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "",
     "url": ""
   },
+  "pre-commit": [
+    "ts.check",
+    "build",
+    "add-build"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -31,6 +40,8 @@
     "typescript": "^4.9.5"
   },
   "devDependencies": {
-    "@types/node-schedule": "^2.1.1"
+    "@types/node-schedule": "^2.1.1",
+    "pre-commit": "^1.2.2",
+    "rimraf": "^5.0.5"
   }
 }
