@@ -8,11 +8,13 @@ import userRouter from "./authentication/user.router";
 import productRoutes from "./product/product.routes";
 import wishListRoutes from "./wishlist/wishlist.routes";
 import cartRoutes from "./cart/cart.route";
+import { scheduleJob } from "node-schedule";
+import fetch from "node-fetch";
 const app = express();
 
 app.use(json());
 app.use(cors());
-const port = process.env.port || 5000;
+const port = process.env.PORT || 5000;
 
 app.get("/", async (req, res) => {
   res.send(" city store server is running ");
@@ -47,4 +49,16 @@ const initializeConfig = async () => {
 app.listen(port, async () => {
   await initializeConfig();
   console.log(`Listening on port ${port}!!!!!`);
+  const selfPing = scheduleJob("*/10 * * * *", async () => {
+    try {
+      console.log("Pinging");
+      await fetch("https://city-server-cwdm.onrender.com"); // Replace 'your render url here' with the URL you want to ping
+      console.log("Pinging Done");
+    } catch (error) {
+      console.log({
+        message: "There is an error from the scheduler",
+        error: error,
+      });
+    }
+  });
 });
