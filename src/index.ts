@@ -9,7 +9,6 @@ import productRoutes from "./product/product.routes";
 import wishListRoutes from "./wishlist/wishlist.routes";
 import cartRoutes from "./cart/cart.route";
 import { scheduleJob } from "node-schedule";
-import fetch from "node-fetch";
 const app = express();
 
 app.use(json());
