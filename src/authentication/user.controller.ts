@@ -53,7 +53,7 @@ export const login = async (req: Request, res: Response) => {
     }
 
     // Create and send a JWT token for authentication
-    const key: any = process.env.secrate_key;
+    const key: any = "my_secrate_key##4ofajofeiweojfkjal";
     const token = jwt.sign({ userId: user._id, email: user.email }, key, {
       expiresIn: "1h",
     });

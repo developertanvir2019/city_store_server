@@ -58,7 +58,7 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             return res.status(401).json({ error: "Invalid credentials" });
         }
         // Create and send a JWT token for authentication
-        const key = process.env.secrate_key;
+        const key = "my_secrate_key##4ofajofeiweojfkjal";
         const token = jsonwebtoken_1.default.sign({ userId: user._id, email: user.email }, key, {
             expiresIn: "1h",
         });

@@ -41,7 +41,7 @@ app.use((err, req, res, next) => {
     });
 });
 // Connecting to Mongodb
-const uri = process.env.mongodbUrl;
+const uri = "mongodb+srv://city_owner:city_owner@cluster0.kigilpn.mongodb.net/city_store";
 const initializeConfig = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield mongoose_1.default.connect(uri);

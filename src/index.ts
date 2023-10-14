@@ -34,7 +34,8 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 });
 
 // Connecting to Mongodb
-const uri: any = process.env.mongodbUrl;
+const uri: any =
+  "mongodb+srv://city_owner:city_owner@cluster0.kigilpn.mongodb.net/city_store";
 const initializeConfig = async () => {
   try {
     await mongoose.connect(uri);
